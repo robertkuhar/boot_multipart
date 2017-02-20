@@ -5,7 +5,7 @@ This project is loosely based on Spring's "Getting Started - Uploading Files" tu
 
 ## Running
 
-To build Tenderfoot from scratch:
+To build boot_multipart from scratch:
 
 ```
 ./gradlew clean build --info
