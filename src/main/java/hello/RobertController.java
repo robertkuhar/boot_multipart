@@ -90,24 +90,42 @@ public class RobertController {
           @RequestBody String scouting_activity_json) {
     LOG.info("POST_v1_scouting_activities_no_image: headers.getContentType(): {}", headers.getContentType());
     LOG.info("POST_v1_scouting_activities_no_image: userId: {}", userId);
-    LOG.info("POST_v1_scouting_activities_no_image: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
+    LOG.info("POST_v1_scouting_activities_no_image: scouting_activity_json.getType().getName(): {}, " +
+                    "scouting_activity: {}",
             scouting_activity_json.getClass().getName(), scouting_activity_json);
     return new ResponseEntity<String>("POST_v1_scouting_activities_no_image\n", HttpStatus.OK);
   }
 
-  // FIXME this never worked!!
   @RequestMapping(value = "/forthTry", method = RequestMethod.POST)
-  public ResponseEntity<String> POST_blah_blah(
-          @RequestHeader HttpHeaders headers,
-          MultipartHttpServletRequest request) {
+  public ResponseEntity<String> POST_blah_blah(MultipartHttpServletRequest request) {
 
-    LOG.info("----- for each request.getParameterNames() -----");
+    LOG.info("forthTry:  request.getContentType(): {}", request.getContentType());
+
+    LOG.info("forthTry:  ----- for each request.getParameterNames() begin -----");
     Enumeration<String> params = request.getParameterNames();
-    while(params.hasMoreElements()) {
+    while (params.hasMoreElements()) {
       String paramName = params.nextElement();
-      LOG.info("paramName: {}, paramValues: {}", paramName, request.getParameterValues(paramName));
+      LOG.info("forthTry:  paramName: {}, paramValues: {}", paramName, request.getParameterValues(paramName));
     }
-    return new ResponseEntity<String>("Hello from thirdTry", HttpStatus.OK);
+    LOG.info("----- forthTry:  for each request.getParameterNames() end   -----");
+
+    LOG.info("----- forthTry:  for each request.getFileMap() begin -----");
+    Map<String, MultipartFile> multipartFileMap = request.getFileMap();
+    for (String paramName : multipartFileMap.keySet()) {
+      LOG.info("forthTry:  paramName: {}, paramValue: {}", paramName, multipartFileMap.get(paramName));
+    }
+    LOG.info("----- forthTry:  for each request.getFileMap() begin -----");
+
+    LOG.info("----- forthTry:  for each request.getFileMap() begin -----");
+    for (MultipartFile mulitpartFile : multipartFileMap.values()) {
+      LOG.info("forthTry:  name: {}, originalName: {}, contentType: {}",
+              mulitpartFile.getName(),
+              mulitpartFile.getOriginalFilename(),
+              mulitpartFile.getContentType());
+    }
+    LOG.info("----- forthTry:  for each request.getFileMap() end   -----");
+
+    return new ResponseEntity<String>("Hello from forthTry\n", HttpStatus.OK);
   }
 
 }

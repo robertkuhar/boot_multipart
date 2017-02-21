@@ -76,6 +76,34 @@ $ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_acti
 -d '{ "field": 1928292, "longitude": -96.80190201101068, "latitude": 42.528416974741084, "note": "This is the center of my field", "scouting_date": "2016-04-12T22:10:17.469Z" }'
 ```
 
+Spring does show some promise in being able to do just general unmapped multipart crap
+
+```
+$ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
+-H 'Content-type:multipart/mixed' \
+-H 'x-user-id:140218' \
+-H 'x-http-request-id:POST_forthTry_File_and_Type_multipart_mixed' \
+-F 'image=@Smile_128x128.png;type=image/png' \
+-F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
+
+$ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
+-H 'x-user-id:140218' \
+-H 'x-http-request-id:POST_forthTry_File_and_Type_multipart_form' \
+-F 'image=@Smile_128x128.png;type=image/png' \
+-F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
+```
+
+...except this last one...it seems incapable of dealing with multiple copies of the same parameter.  Ugh.
+
+```
+curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
+-H 'x-user-id:140218' \
+-H 'x-http-request-id:POST_forthTry_File_and_Type_multipart_form' \
+-F 'image=@Smile_128x128.png;type=image/png' \
+-F 'scouting_activity=@some.json;type=application/json' \
+-F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
+```
+
 # Conclusion:  Spring Sucks!!!!
 
 The abstraction is so opaque as to be completely useless without reading all the sourcecode.  Virtually all of the
