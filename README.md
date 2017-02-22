@@ -91,6 +91,22 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
   "scouting_date": "2016-04-12T22:10:17.469Z"
 }'
 
+# The Web does multipart/form-data if it has an image
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+-H 'Content-type:multipart/form-data' \
+-H 'x-user-id:140218' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
+-H 'x-http-request-id:POST_scouting_activities' \
+-F 'image=@Smile_128x128.png;type=image/png' \
+-F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
+
+# The Web does application/json if it does not have an image
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+-H 'Content-type:application/json' \
+-H 'x-user-id:140218' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
+-H 'x-http-request-id:POST_scouting_activities_no_image' \
+--data-binary '{"field":24846935,"note":"Hello","longitude":-90.5984887,"latitude":40.225,"scouting_date":"2017-02-22"}'
 ```
 
 Spring does show some promise in being able to do just general unmapped multipart crap
@@ -125,4 +141,5 @@ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
 
 The abstraction is so opaque as to be completely useless without reading all the sourcecode.  Virtually all of the
 Stack Overvlow questions have one aspect or another wrong.  The Documentation does nothing but explain the happieset
-of Happy Paths.  For Multipart File Upload, Spring is useless.
+of Happy Paths.  For Multipart File Upload, Spring is useless and I am grumpy.
+

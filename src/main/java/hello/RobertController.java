@@ -97,7 +97,7 @@ public class RobertController {
   }
 
   @RequestMapping(value = "/v1/{userId}/scouting_activities", method = RequestMethod.POST,
-          headers = "content-type=multipart/mixed")
+          headers = {"content-type=multipart/mixed","content-type=multipart/form-data"})
   public ResponseEntity<String> POST_v1_scouting_activities(
           @RequestHeader HttpHeaders headers,
           @PathVariable String userId,
