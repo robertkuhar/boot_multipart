@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -69,20 +70,49 @@ public class RobertController {
 
   @RequestMapping(value = "/thirdTry/{userId}/scouting_activities", method = RequestMethod.POST,
           headers = "content-type=multipart/mixed")
-  public ResponseEntity<String> POST_v1_scouting_activities_image(
+  public ResponseEntity<String> thirdTry_image(
           @RequestHeader HttpHeaders headers,
           @PathVariable String userId,
           @RequestParam(value = "image", required = false) MultipartFile image,
           @RequestParam(value = "scouting_activity", required = true) Object scouting_activity_json) {
-    LOG.info("POST_v1_scouting_activities_image: headers.getContentType(): {}", headers.getContentType());
-    LOG.info("POST_v1_scouting_activities_image: userId: {}", userId);
-    LOG.info("POST_v1_scouting_activities_image: image: {}", image);
-    LOG.info("POST_v1_scouting_activities_image: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
+    LOG.info("thirdTry_image: headers.getContentType(): {}", headers.getContentType());
+    LOG.info("thirdTry_image: userId: {}", userId);
+    LOG.info("thirdTry_image: image: {}", image);
+    LOG.info("thirdTry_image: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
             scouting_activity_json.getClass().getName(), scouting_activity_json);
-    return new ResponseEntity<String>("POST_v1_scouting_activities_image\n", HttpStatus.OK);
+    return new ResponseEntity<String>("thirdTry_image\n", HttpStatus.OK);
   }
 
   @RequestMapping(value = "/thirdTry/{userId}/scouting_activities", method = RequestMethod.POST,
+          headers = "content-type=application/json")
+  public ResponseEntity<String> thirdTry_no_image(
+          @RequestHeader HttpHeaders headers,
+          @PathVariable String userId,
+          @RequestBody String scouting_activity_json) {
+    LOG.info("thirdTry_no_image: headers.getContentType(): {}", headers.getContentType());
+    LOG.info("thirdTry_no_image: userId: {}", userId);
+    LOG.info("thirdTry_no_image: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
+            scouting_activity_json.getClass().getName(), scouting_activity_json);
+    return new ResponseEntity<String>("thirdTry_no_image\n", HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/v1/{userId}/scouting_activities", method = RequestMethod.POST,
+          headers = "content-type=multipart/mixed")
+  public ResponseEntity<String> POST_v1_scouting_activities(
+          @RequestHeader HttpHeaders headers,
+          @PathVariable String userId,
+          @RequestPart(value = "image", required = false) MultipartFile image,
+          @RequestPart(value = "scouting_activity", required = true) String scouting_activity_json) {
+    LOG.info("POST_v1_scouting_activities: headers.getContentType(): {}", headers.getContentType());
+    LOG.info("POST_v1_scouting_activities: userId: {}", userId);
+    LOG.info("POST_v1_scouting_activities: image.originalFilename: {}, image: {}",
+            (image!=null) ? image.getOriginalFilename() : null, image);
+    LOG.info("POST_v1_scouting_activities: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
+            scouting_activity_json.getClass().getName(), scouting_activity_json);
+    return new ResponseEntity<String>("POST_v1_scouting_activities\n", HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/v1/{userId}/scouting_activities", method = RequestMethod.POST,
           headers = "content-type=application/json")
   public ResponseEntity<String> POST_v1_scouting_activities_no_image(
           @RequestHeader HttpHeaders headers,
@@ -90,8 +120,7 @@ public class RobertController {
           @RequestBody String scouting_activity_json) {
     LOG.info("POST_v1_scouting_activities_no_image: headers.getContentType(): {}", headers.getContentType());
     LOG.info("POST_v1_scouting_activities_no_image: userId: {}", userId);
-    LOG.info("POST_v1_scouting_activities_no_image: scouting_activity_json.getType().getName(): {}, " +
-                    "scouting_activity: {}",
+    LOG.info("POST_v1_scouting_activities_no_image: scouting_activity_json.getType().getName(): {}, scouting_activity: {}",
             scouting_activity_json.getClass().getName(), scouting_activity_json);
     return new ResponseEntity<String>("POST_v1_scouting_activities_no_image\n", HttpStatus.OK);
   }

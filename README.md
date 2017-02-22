@@ -34,24 +34,11 @@ here for the demo.
 # Working curls
 
 ```
-$ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
--H 'x-http-request-id:POST_thirdTry_String_no_Type' \
--F 'image=@Smile_128x128.png;type=image/png' \
--F 'scouting_activity={
-  "field": 14006513,
-  "longitude": -93.2038253,
-  "latitude": 38.5203231,
-  "note": "This is the center of Dino Head.",
-  "scouting_date": "2017-01-19T22:56:04.836Z"
-}'
-
-
-$ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_activities' \
--H 'Content-type:multipart/mixed' \
--H 'x-user-id:140218' \
--H 'x-http-request-id:POST_thirdTry_String_and_Type' \
+-H 'x-http-request-id:POST_scouting_activities' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
 -F 'image=@Smile_128x128.png;type=image/png' \
 -F 'scouting_activity={
   "field": 14006513,
@@ -61,19 +48,49 @@ $ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_acti
   "scouting_date": "2017-01-19T22:56:04.836Z"
 };type=application/json'
 
-$ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
--H 'x-http-request-id:POST_thirdTry_File_and_Type' \
+-H 'x-http-request-id:POST_scouting_activities' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
+-F 'image=@Smile_128x128.png;type=image/png' \
+-F 'scouting_activity={
+  "field": 14006513,
+  "longitude": -93.2038253,
+  "latitude": 38.5203231,
+  "note": "This is the center of Dino Head.",
+  "scouting_date": "2017-01-19T22:56:04.836Z"
+}'
+
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+-H 'Content-type:multipart/mixed' \
+-H 'x-user-id:140218' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
+-H 'x-http-request-id:POST_scouting_activities' \
 -F 'image=@Smile_128x128.png;type=image/png' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+-H 'Content-type:multipart/mixed' \
+-H 'x-user-id:140218' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
+-H 'x-http-request-id:POST_scouting_activities' \
+-F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
-$ curl -i -v -X POST 'http://localhost:8080/robert/thirdTry/140218/scouting_activities' \
+
+curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -H 'Content-type:application/json' \
 -H 'x-user-id:140218' \
+-H 'x-http-caller-id: tcc-rkuhar.local' \
 -H 'x-http-request-id:POST_thirdTry_scouting_activity_in_body' \
--d '{ "field": 1928292, "longitude": -96.80190201101068, "latitude": 42.528416974741084, "note": "This is the center of my field", "scouting_date": "2016-04-12T22:10:17.469Z" }'
+-d '{
+  "field": 1928292,
+  "longitude": -96.80190201101068,
+  "latitude": 42.528416974741084,
+  "note": "This is the center of my field",
+  "scouting_date": "2016-04-12T22:10:17.469Z"
+}'
+
 ```
 
 Spring does show some promise in being able to do just general unmapped multipart crap
