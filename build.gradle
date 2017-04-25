@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
     }
 }
 
@@ -13,7 +13,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'gs-uploading-files'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 repositories {
@@ -25,5 +25,11 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    // compile("org.springframework.boot:spring-boot-starter-thymeleaf") {
+    //     exclude module: "spring-boot-starter-tomcat"
+    // }
+    // compile("org.springframework.boot:spring-boot-starter-jetty")
+    // compile("org.springframework.boot:spring-boot-starter-undertow")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
