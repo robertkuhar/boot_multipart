@@ -34,7 +34,7 @@ here for the demo.
 # Working curls
 
 ```
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-request-id:POST_scouting_activities' \
@@ -48,7 +48,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
   "scouting_date": "2017-01-19T22:56:04.836Z"
 };type=application/json'
 
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-request-id:POST_scouting_activities' \
@@ -62,7 +62,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
   "scouting_date": "2017-01-19T22:56:04.836Z"
 }'
 
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -70,7 +70,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -F 'image=@Smile_128x128.png;type=image/png' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -78,7 +78,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
 
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:application/json' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -92,7 +92,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 }'
 
 # The Web does multipart/form-data if it has an image
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:multipart/form-data' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -101,7 +101,7 @@ curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
 # The Web does application/json if it does not have an image
-curl -i -X POST 'http://localhost:8080/robert/v1/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'Content-type:application/json' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -129,7 +129,7 @@ $ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
 ...except this last one...it seems incapable of dealing with multiple copies of the same parameter.  Ugh.
 
 ```
-curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
+$ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
 -H 'x-user-id:140218' \
 -H 'x-http-request-id:POST_forthTry_File_and_Type_multipart_form' \
 -F 'image=@Smile_128x128.png;type=image/png' \

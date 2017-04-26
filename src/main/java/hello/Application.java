@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import java.util.Arrays;
 
@@ -23,6 +25,16 @@ public class Application {
     SpringApplication.run(Application.class, args);
   }
 
+/*
+  // This is how you change from Spring's MultipartResolver to CommonsMultipartResolver.
+  // Note that you have to include commons-fileupload in your build.gradle for this to work.
+  @Bean
+  public CommonsMultipartResolver multipartResolver() {
+    CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+    resolver.setDefaultEncoding("utf-8");
+    return resolver;
+  }
+*/
   @Bean
   CommandLineRunner init(StorageService storageService) {
     return (args) -> {

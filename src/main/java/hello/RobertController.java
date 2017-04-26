@@ -148,7 +148,7 @@ public class RobertController {
     for (String paramName : multipartFileMap.keySet()) {
       LOG.info("forthTry:  paramName: {}, paramValue: {}", paramName, multipartFileMap.get(paramName));
     }
-    LOG.info("----- forthTry:  for each request.getFileMap() begin -----");
+    LOG.info("----- forthTry:  for each request.getFileMap() end -----");
 
     LOG.info("----- forthTry:  for each request.getFileMap() begin -----");
     for (MultipartFile mulitpartFile : multipartFileMap.values()) {
