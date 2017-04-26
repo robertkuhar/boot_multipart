@@ -34,7 +34,7 @@ here for the demo.
 # Working curls
 
 ```
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-request-id:POST_scouting_activities' \
@@ -48,7 +48,7 @@ curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
   "scouting_date": "2017-01-19T22:56:04.836Z"
 };type=application/json'
 
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-request-id:POST_scouting_activities' \
@@ -62,7 +62,7 @@ curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
   "scouting_date": "2017-01-19T22:56:04.836Z"
 }'
 
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:multipart/mixed' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -77,8 +77,7 @@ curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -H 'x-http-request-id:POST_scouting_activities' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
-
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:application/json' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -92,7 +91,7 @@ curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 }'
 
 # The Web does multipart/form-data if it has an image
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:multipart/form-data' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -101,7 +100,7 @@ curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 
 # The Web does application/json if it does not have an image
-curl -i -X POST 'http://localhost:8080/robert/user/140218/scouting_activities' \
+curl -i -X POST 'http://localhost:8080/v1/user/140218/scouting_activities' \
 -H 'Content-type:application/json' \
 -H 'x-user-id:140218' \
 -H 'x-http-caller-id: tcc-rkuhar.local' \
@@ -137,7 +136,7 @@ $ curl -i -v -X POST 'http://localhost:8080/robert/forthTry' \
 -F 'scouting_activity=@scoutingFrackingCurl.json;type=application/json'
 ```
 
-# Conclusion:  Spring Sucks!!!!
+# Conclusion:  Spring's Multipart support is "happy path" at best!!!!
 
 The abstraction is so opaque as to be completely useless without reading all the sourcecode.  Virtually all of the
 Stack Overvlow questions have one aspect or another wrong.  The Documentation does nothing but explain the happieset
