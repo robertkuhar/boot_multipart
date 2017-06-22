@@ -97,7 +97,7 @@ public class RobertController {
   }
 
   /*
-   * This guy is cool because it can handle both multipart/mixed and multpart/file but there is no way I can find
+   * This guy is cool because it can handle both multipart/mixed and multipart/file but there is no way I can find
    * to make it deal with multiple unique copies of the same param name.  Under the covers it is definitely capable
    * of doing this as the rich mappings handle this.  Maybe it doesn't matter for my purposes.
    */
